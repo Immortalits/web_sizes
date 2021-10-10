@@ -1,5 +1,7 @@
 import pickle
 
+# 1. feladat:
+
 with open('./web_size.pickle', 'rb') as handle:
     sites = pickle.load(handle)
 
@@ -21,3 +23,16 @@ avg_size = sum_size / len(sites)
 avg_size = round(avg_size, 2)
 
 print(f"Avarage size is: {avg_size} Gb.")
+
+# ----------------------------------------------------
+# 2. feladat:
+
+for i in range(0, len(sites_new)):
+    if sites[i]["size"] != sites_new[i]["size"]:
+        dif = sites_new[i]["size"] - sites[i]["size"]
+        rate = dif / (sites_new[i]["size"] / 100)
+        rate = round(rate, 2)
+        if rate > 0:
+            print(f"{sites_new[i]['domain']} changed by +{rate}%.")
+        if rate < 0:
+            print(f"{sites_new[i]['domain']} changed by {rate}%.")
