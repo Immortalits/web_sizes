@@ -36,3 +36,24 @@ for i in range(0, len(sites_new)):
             print(f"{sites_new[i]['domain']} changed by +{rate}%.")
         if rate < 0:
             print(f"{sites_new[i]['domain']} changed by {rate}%.")
+
+# ----------------------------------------------------
+# 3. feladat:
+
+empty_sites = 0
+for site in sites_new:
+    if site["size"] == 0:
+        empty_sites += 1
+
+print(f"There are {empty_sites} empty sites.")
+
+# ----------------------------------------------------
+# 4. feladat:
+
+for site in sites_new:
+    if site["size"] != 0:
+        if site["size"] > 1024:
+            meret = round(site['size'] / 1024, 2)
+            print(f"{site['domain']} is {meret} Gb.")
+        else:
+            print(f"{site['domain']} is {site['size']} Mb.")
